@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import { CgDarkMode } from "react-icons/cg";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
@@ -93,7 +94,7 @@ function Header() {
           <div className="w-full flex items-center justify-center my-4">
             <button
               onClick={handleDownload}
-              className="flex text-white items-center gap-3 bg-linear-to-r duration-300 transition-all hover:scale-110 shadow-md from-blue-700 to-teal-600 py-1 px-3 rounded-md"
+              className="flex text-white items-center gap-3 bg-gradient-to-r duration-300 transition-all hover:scale-110 shadow-md from-blue-700 to-teal-600 py-1 px-3 rounded-md"
             >Resume</button>
           </div>
         </ul>
@@ -102,7 +103,7 @@ function Header() {
       <div className="flex items-center gap-5">
         <button
           onClick={handleDownload}
-          className="hidden md:flex text-white items-center gap-3 bg-linear-to-r duration-300 transition-all hover:scale-110 shadow-md from-blue-700 to-teal-600 py-1 px-3 rounded-md"
+          className="hidden md:flex text-white items-center gap-3 bg-gradient-to-r duration-300 transition-all hover:scale-110 shadow-md from-blue-700 to-teal-600 py-1 px-3 rounded-md"
         >Resume</button>
         <button className="cursor-pointer text-xl hidden md:flex" onClick={handleToggleDarkMode}>
           <CgDarkMode />
