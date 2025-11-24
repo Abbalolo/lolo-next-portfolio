@@ -15,8 +15,8 @@ function Header() {
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/Ibrahimresume.pdf"; 
-    link.download = "Ibrahim_Lawal_Abba.pdf";
+    link.href = "/Ibrahimlawalabba.docx"; 
+    link.download = "Ibrahim_Lawal_Abba.doc";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -53,13 +53,13 @@ function Header() {
       {openNav && <Blur handleNav={handleNav} />}
       <div className="flex items-center">
         <div className="flex items-center gap-3">
-          <Link href="/">
+          <Link href="/"> 
             <h1 className="text-[20px] text-blue-500 font-semibold md:text-[30px] lg:text-start cursor-pointer">
               IBRAHIM LAWAL ABBA
             </h1>
           </Link>
           <ReactTyped
-            className="font-bold lg:text-xl text-[12px] text-gray-400 dark:text-gray-400"
+            className="font-bold lg:text-xl text-[12px] text-gr ay-400 dark:text-gray-400"
             strings={[
               "A FullStack Developer",
               "A FrontEnd Developer"

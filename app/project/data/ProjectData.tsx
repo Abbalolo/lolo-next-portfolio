@@ -16,8 +16,8 @@ import risebot from "../project-image/risebot.png";
 import sayyes from "../project-image/sayyes.png";
 import hypa from "../project-image/hypa-p.png";
 import joshEgesi from "../project-image/josh-egesi.png";
-// Add the missing import for zidwellFinance
-import zidwellFinance from "../project-image/zidwell.png"; // Update this path if you have a different image
+
+import zidwellFinance from "../project-image/zidwell.png"; 
 
 export interface ProjectCard {
   id: number;

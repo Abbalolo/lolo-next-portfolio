@@ -44,7 +44,7 @@ export default function ProjectDetailPage() {
   
   if (!projectId) {
     return (
-      <div className="flex items-center justify-center h-64 bg-gray-900 dark:bg-gray-50 text-gray-50 dark:text-gray-600">
+      <div className="flex items-center justify-center h-64 dark:bg-gray-50 text-gray-50 dark:text-gray-600">
         <p>Project ID not found</p>
       </div>
     );
@@ -56,7 +56,7 @@ export default function ProjectDetailPage() {
   
   if (!project) {
     return (
-      <div className="flex items-center justify-center h-64 bg-gray-900 dark:bg-gray-50 text-gray-50 dark:text-gray-600">
+      <div className="flex items-center justify-center h-64 dark:bg-gray-50 text-gray-50 dark:text-gray-600">
         <p>Project not found</p>
       </div>
     );
@@ -68,7 +68,7 @@ export default function ProjectDetailPage() {
   const hostUrl = isValidUrl(host) ? host : "#";
 
   return (
-    <section className='flex flex-col md:flex-row gap-10 relative px-5 lg:px-16 md:px-10 pb-40 bg-gray-900 dark:bg-gray-50 text-gray-50 dark:text-gray-600'>
+    <section className='flex flex-col md:flex-row gap-10 relative px-5 lg:px-16 md:px-10 pb-40 dark:bg-gray-50 text-gray-50 dark:text-gray-600'>
       <Image 
         className="rounded-lg md:w-[600px] h-full object-cover" 
         src={getImageSrc(project.image)}
