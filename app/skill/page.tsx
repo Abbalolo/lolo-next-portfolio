@@ -1,3 +1,4 @@
+"use client"
 import { FaFigma } from "react-icons/fa"; 
 import { TbBrandVite } from "react-icons/tb"; 
 import { TbBrandGithubCopilot } from "react-icons/tb"; 
@@ -11,7 +12,7 @@ import { TbBrandNextjs } from "react-icons/tb";
 import { SiDaisyui } from "react-icons/si";
 import { AiFillGithub } from "react-icons/ai";
 import { FaNodeJs } from "react-icons/fa";
-import { RiReactjsFill } from "react-icons/ri";
+import { RiReactjsFill, RiSupabaseFill } from "react-icons/ri";
 import { SiTailwindcss } from "react-icons/si";
 import { SiJavascript } from "react-icons/si";
 import { DiCss3Full } from "react-icons/di";
@@ -22,7 +23,7 @@ import { GiGraduateCap } from "react-icons/gi";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import SideBar from "../../components/sidebar/SideBar";
+import SideBar from "../components/SideBar"; 
 
 function Skills() {
   const contents = [
@@ -157,6 +158,11 @@ function Skills() {
       id: 9,
       name: "Figma",
       icon:<FaFigma />,
+    },
+    {
+      id: 10,
+      name: "Supabase",
+      icon:<RiSupabaseFill />,
     },
    
   ];
