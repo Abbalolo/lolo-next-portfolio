@@ -15,7 +15,7 @@ function Header() {
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/Ibrahimlawalabba.docx"; 
+    link.href = "/IBRAHIM LAWAL.pdf"; 
     link.download = "Ibrahim_Lawal_Abba.doc";
     document.body.appendChild(link);
     link.click();
