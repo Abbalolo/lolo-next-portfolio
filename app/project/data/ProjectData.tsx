@@ -17,7 +17,7 @@ import sayyes from "../project-image/sayyes.png";
 import hypa from "../project-image/hypa-p.png";
 import joshEgesi from "../project-image/josh-egesi.png";
 
-import zidwellFinance from "../project-image/zidwell.png"; 
+import zidwellFinance from "../project-image/zidwellFinance.png"; 
 
 export interface ProjectCard {
   id: number;
