@@ -1,13 +1,13 @@
 // app/project/[projectId]/page.tsx
 "use client";
-import { BiLinkExternal } from "react-icons/bi";
+import { BiArrowBack, BiLinkExternal } from "react-icons/bi";
 import { AiFillGithub } from "react-icons/ai";
 import React from 'react';
 import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 import { useParams } from 'next/navigation';
 import { portfolioCards } from "../data/ProjectData";
-
+import { useRouter } from "next/navigation";
 interface ProjectCard {
   id: string | number;
   name: string;
@@ -40,6 +40,7 @@ const isValidUrl = (url: unknown): url is string => {
 
 export default function ProjectDetailPage() {
   const params = useParams();
+  const router = useRouter()
   const projectId = params?.projectId as string | undefined;
   
   if (!projectId) {
@@ -69,15 +70,27 @@ export default function ProjectDetailPage() {
 
   return (
     <section className='flex flex-col md:flex-row gap-10 relative px-5 lg:px-16 md:px-10 pb-40 dark:bg-gray-50 text-gray-50 dark:text-gray-600'>
-      <Image 
-        className="rounded-lg md:w-[600px] h-full object-cover" 
-        src={getImageSrc(project.image)}
-        alt={name} 
-        width={600}
-        height={400}
-        sizes="(max-width: 768px) 100vw, 600px"
-      />
-      
+    <div className="w-full lg:w-auto">
+<button
+  className="flex items-center gap-2 p-2 mb-4 hover:text-blue-500 transition-colors"
+  onClick={() => router.back()}
+>
+  <BiArrowBack className="text-xl" />
+  Go Back
+</button>
+
+  <div className="relative w-full lg:w-[600px] aspect-[16/10] overflow-hidden rounded-xl shadow-lg">
+    <Image
+      src={getImageSrc(project.image)}
+      alt={name}
+      fill
+      priority
+      sizes="(max-width: 1024px) 100vw, 600px"
+      className="object-cover"
+    />
+  </div>
+</div>
+
       <div className="flex-1">
         <h1 className='font-extrabold text-2xl pt-2 pb-2'>{name}</h1>
         <p className="pb-3 text-gray-300 dark:text-gray-600 text-lg">{short}</p>

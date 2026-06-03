@@ -28,31 +28,41 @@ function Footer() {
 
   return (
     <>
-    <footer className={ scrolling ?`backdrop-blur-md text-[#f9f7f6] dark:text-[#545454] w-full p-3 text-center fixed bothrefm-0 shadow-2xl lg:hidden z-20` : `hidden`}>
-     <div
+  <footer
+  className={
+    scrolling
+      ? "fixed bottom-0 left-0 right-0 z-50 lg:hidden backdrop-blur-md bg-black/70 dark:bg-white/70 shadow-2xl"
+      : "hidden"
+  }
+>
+  <div className="flex justify-around items-center py-3 text-2xl text-gray-300 dark:text-gray-600">
+    <Link target="_blank" href="https://web.facebook.com/lolo.fundz/">
+      <AiFillFacebook className="hover:text-blue-700 duration-300" />
+    </Link>
 
-      className="flex text-2xl  justify-around gap-4  text-gray-600"
+    <Link
+      target="_blank"
+      href="https://www.linkedin.com/in/ibrahim-lawal-2772a8243/"
     >
-      <Link target="_blank" href="https://web.facebook.com/lolo.fundz/">
-        <AiFillFacebook className="hover:text-blue-700 duration-300" />
-      </Link>
-      <Link
-        target="_blank"
-        href="https://www.linkedin.com/in/ibrahim-lawal-2772a8243/"
-      >
-        <AiFillLinkedin className="hover:text-blue-500 duration-300" />
-      </Link>
-      <Link target="_blank" href="https://twitter.com/Ibrahim46284657">
-        <AiFillTwitterCircle className="hover:text-blue-300 duration-300" />
-      </Link>
-      <Link target="_blank" href="https://github.com/Abbalolo">
+      <AiFillLinkedin className="hover:text-blue-500 duration-300" />
+    </Link>
+
+    <Link target="_blank" href="https://twitter.com/Ibrahim46284657">
+      <AiFillTwitterCircle className="hover:text-blue-300 duration-300" />
+    </Link>
+
+    <Link target="_blank" href="https://github.com/Abbalolo">
       <AiFillGithub className="hover:text-white duration-300" />
-      </Link>
-      <Link target="_blank" href="https://instagram.com/lohloh009?igshid=OGQ5ZDc2ODk2ZA==">
+    </Link>
+
+    <Link
+      target="_blank"
+      href="https://instagram.com/lohloh009?igshid=OGQ5ZDc2ODk2ZA=="
+    >
       <AiFillInstagram className="hover:text-red-300 duration-300" />
-      </Link>
-    </div>
-    </footer>
+    </Link>
+  </div>
+</footer>
     </>
   )
 }
