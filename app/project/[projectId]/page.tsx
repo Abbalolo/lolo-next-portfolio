@@ -1,35 +1,17 @@
-// app/project/[projectId]/page.tsx
 "use client";
+
 import { BiArrowBack, BiLinkExternal } from "react-icons/bi";
 import { AiFillGithub } from "react-icons/ai";
-import React from 'react';
-import Link from 'next/link';
-import Image, { StaticImageData } from 'next/image';
-import { useParams } from 'next/navigation';
+import Link from "next/link";
+import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
+import { motion } from "motion/react";
+
 import { portfolioCards } from "../data/ProjectData";
-import { useRouter } from "next/navigation";
-interface ProjectCard {
-  id: string | number;
-  name: string;
-  image: string | StaticImageData;
-  language: string[];
-  github: string;
-  host: string;
-  description: string;
-  short: string;
-  category: string;
-  achieve?: string;
-  field?: string;
-}
+import { Reveal } from "../../components/motion/Reveal";
 
-// Helper function to handle both string and StaticImageData
-const getImageSrc = (image: string | StaticImageData): string | StaticImageData => {
-  return image;
-};
-
-// Type guard to check if a value is a valid URL
 const isValidUrl = (url: unknown): url is string => {
-  if (typeof url !== 'string') return false;
+  if (typeof url !== "string" || url.length === 0) return false;
   try {
     new URL(url);
     return true;
@@ -40,102 +22,110 @@ const isValidUrl = (url: unknown): url is string => {
 
 export default function ProjectDetailPage() {
   const params = useParams();
-  const router = useRouter()
+  const router = useRouter();
   const projectId = params?.projectId as string | undefined;
-  
-  if (!projectId) {
+
+  const project = portfolioCards.find((item) => item.id.toString() === projectId);
+
+  if (!projectId || !project) {
     return (
-      <div className="flex items-center justify-center h-64 dark:bg-gray-50 text-gray-50 dark:text-gray-600">
-        <p>Project ID not found</p>
+      <div className="container-page py-24 text-center">
+        <p className="label">404</p>
+        <h1 className="mt-3 text-3xl tracking-tight">Project not found</h1>
+        <p className="mt-3 text-muted">We couldn&apos;t find that project.</p>
+        <Link href="/project" className="btn btn-primary mt-6">
+          <BiArrowBack /> Back to projects
+        </Link>
       </div>
     );
   }
 
-  const project = portfolioCards.find((item) => 
-    item.id.toString() === projectId
-  );
-  
-  if (!project) {
-    return (
-      <div className="flex items-center justify-center h-64 dark:bg-gray-50 text-gray-50 dark:text-gray-600">
-        <p>Project not found</p>
-      </div>
-    );
-  }
-  
   const { name, language, github, host, description, short } = project;
-
-  const githubUrl = isValidUrl(github) ? github : "#";
   const hostUrl = isValidUrl(host) ? host : "#";
 
   return (
-    <section className='flex flex-col md:flex-row gap-10 relative px-5 lg:px-16 md:px-10 pb-40 dark:bg-gray-50 text-gray-50 dark:text-gray-600'>
-    <div className="w-full lg:w-auto">
-<button
-  className="flex items-center gap-2 p-2 mb-4 hover:text-blue-500 transition-colors"
-  onClick={() => router.back()}
->
-  <BiArrowBack className="text-xl" />
-  Go Back
-</button>
+    <section className="container-page pt-12 md:pt-16 pb-24">
+      <motion.button
+        type="button"
+        onClick={() => router.back()}
+        className="inline-flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors mb-8"
+        initial={{ opacity: 0, x: -8 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        <BiArrowBack /> Back
+      </motion.button>
 
-  <div className="relative w-full lg:w-[600px] aspect-[16/10] overflow-hidden rounded-xl shadow-lg">
-    <Image
-      src={getImageSrc(project.image)}
-      alt={name}
-      fill
-      priority
-      sizes="(max-width: 1024px) 100vw, 600px"
-      className="object-cover"
-    />
-  </div>
-</div>
-
-      <div className="flex-1">
-        <h1 className='font-extrabold text-2xl pt-2 pb-2'>{name}</h1>
-        <p className="pb-3 text-gray-300 dark:text-gray-600 text-lg">{short}</p>
-        
-        <div className='mt-6'>
-          <h2 className='font-semibold text-xl mb-2'>About</h2>
-          <p className="text-gray-300 dark:text-gray-600 leading-relaxed">{description}</p>
-        </div>
-
-        <div className='mt-6'>
-          <h2 className='font-semibold text-xl mb-2'>Technologies</h2>
-          <div className="flex flex-wrap gap-2 py-1">
-            {language.map((lang, index) => (
-              <span 
-                key={index} 
-                className="text-sm md:text-base text-white hover:bg-blue-500 hover:text-white bg-slate-800 dark:bg-transparent dark:border dark:border-gray-400 rounded-md px-3 py-1 text-center duration-300 cursor-pointer"
-              >
-                {lang}
-              </span>
-            ))}
+      <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-14 items-start">
+        {/* Media */}
+        <Reveal y={20} className="lg:sticky lg:top-24">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-line bg-surface">
+            <Image
+              src={project.image}
+              alt={name}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              placeholder="blur"
+              className="object-cover"
+            />
           </div>
-        </div>
+          <div className="mt-4 flex items-center justify-between gap-3 label">
+            <span className="rounded-md border border-line px-2.5 py-1">{project.category}</span>
+            {project.field && <span>{project.field}</span>}
+          </div>
+        </Reveal>
 
-        <div className='mt-6'>
-          <h2 className="font-semibold text-xl mb-2 flex items-center gap-2">
-            <AiFillGithub className="text-2xl" />GitHub Repository
-          </h2>
-          <Link 
-            href={githubUrl}
-            className="text-blue-400 hover:text-blue-300 hover:underline cursor-pointer break-all"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {github}
-          </Link>
-        </div>
+        {/* Info */}
+        <div>
+          <Reveal delay={0.05}>
+            <h1 className="text-[clamp(1.8rem,4vw,3rem)] tracking-[-0.03em]">{name}</h1>
+            <p className="mt-3 text-lg text-muted">{short}</p>
+          </Reveal>
 
-        <Link 
-          href={hostUrl}
-          target="_blank"
-          rel="noopener noreferrer" 
-          className="mt-8 bg-blue-900 hover:bg-blue-800 p-4 w-full flex items-center justify-center gap-2 text-white rounded-md transition-colors duration-300 font-semibold"
-        >
-          Open Project <BiLinkExternal className="text-xl" />
-        </Link>
+          <Reveal delay={0.12} className="mt-8">
+            <h2 className="label mb-2">About</h2>
+            <p className="text-muted leading-relaxed">{description}</p>
+          </Reveal>
+
+          <Reveal delay={0.18} className="mt-8">
+            <h2 className="label mb-3">Technologies</h2>
+            <ul className="flex flex-wrap gap-2">
+              {language.map((lang) => (
+                <li key={lang} className="mono text-xs rounded-md border border-line bg-surface px-2.5 py-1">
+                  {lang}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            {isValidUrl(hostUrl) && (
+              <a
+                href={hostUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary flex-1 justify-center"
+              >
+                <BiLinkExternal /> Live project
+              </a>
+            )}
+            {isValidUrl(github) && (
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost flex-1 justify-center"
+              >
+                <AiFillGithub /> Source code
+              </a>
+            )}
+          </div>
+
+          {isValidUrl(github) && (
+            <p className="mt-4 mono text-xs text-muted break-all">{github}</p>
+          )}
+        </div>
       </div>
     </section>
   );

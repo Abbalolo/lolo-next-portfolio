@@ -1,70 +1,90 @@
-"use client"
-import { AiFillGithub, AiFillInstagram } from "react-icons/ai"; 
-import { useEffect } from "react";
-import { useState } from "react";
-import { AiFillFacebook, AiFillLinkedin, AiFillTwitterCircle } from "react-icons/ai"
+"use client";
+
+import { motion } from "motion/react";
 import Link from "next/link";
+import {
+  AiFillFacebook,
+  AiFillGithub,
+  AiFillInstagram,
+  AiFillLinkedin,
+  AiFillTwitterCircle,
+} from "react-icons/ai";
 
+const SOCIALS = [
+  { href: "https://github.com/Abbalolo", label: "GitHub", Icon: AiFillGithub },
+  { href: "https://www.linkedin.com/in/ibrahim-lawal-2772a8243/", label: "LinkedIn", Icon: AiFillLinkedin },
+  { href: "https://twitter.com/Ibrahim46284657", label: "Twitter", Icon: AiFillTwitterCircle },
+  { href: "https://web.facebook.com/lolo.fundz/", label: "Facebook", Icon: AiFillFacebook },
+  { href: "https://instagram.com/lohloh009", label: "Instagram", Icon: AiFillInstagram },
+];
 
-function Footer() {
+const NAV = [
+  { href: "/skills", label: "Skills" },
+  { href: "/experience", label: "Experience" },
+  { href: "/project", label: "Projects" },
+  { href: "/contact", label: "Contact" },
+];
 
-  const [scrolling, setScrolling] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-  
+export default function Footer() {
+  const year = new Date().getFullYear();
 
   return (
-    <>
-  <footer
-  className={
-    scrolling
-      ? "fixed bottom-0 left-0 right-0 z-50 lg:hidden backdrop-blur-md bg-black/70 dark:bg-white/70 shadow-2xl"
-      : "hidden"
-  }
->
-  <div className="flex justify-around items-center py-3 text-2xl text-gray-300 dark:text-gray-600">
-    <Link target="_blank" href="https://web.facebook.com/lolo.fundz/">
-      <AiFillFacebook className="hover:text-blue-700 duration-300" />
-    </Link>
+    <footer className="container-page pt-16 pb-10 border-t border-line mt-24">
+      <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div>
+          <div className="mono text-accent text-lg font-semibold tracking-tight">~/</div>
+          <p className="mt-3 text-sm text-muted max-w-xs leading-relaxed">
+            Ibrahim Lawal Abba — full-stack &amp; frontend developer building fast, accessible web
+            experiences. Let&apos;s ship something.
+          </p>
+          <Link href="/contact" className="mt-4 inline-flex text-sm text-accent underline-link">
+            Start a conversation →
+          </Link>
+        </div>
 
-    <Link
-      target="_blank"
-      href="https://www.linkedin.com/in/ibrahim-lawal-2772a8243/"
-    >
-      <AiFillLinkedin className="hover:text-blue-500 duration-300" />
-    </Link>
+        <div>
+          <p className="label mb-4">Navigate</p>
+          <ul className="space-y-2 text-sm">
+            {NAV.map((n) => (
+              <li key={n.href}>
+                <Link href={n.href} className="text-muted hover:text-fg underline-link">
+                  {n.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-    <Link target="_blank" href="https://twitter.com/Ibrahim46284657">
-      <AiFillTwitterCircle className="hover:text-blue-300 duration-300" />
-    </Link>
+        <div>
+          <p className="label mb-4">Elsewhere</p>
+          <ul className="space-y-2 text-sm">
+            {SOCIALS.map((s) => (
+              <li key={s.href}>
+                <Link
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-muted hover:text-fg"
+                >
+                  <s.Icon size={16} />
+                  {s.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
-    <Link target="_blank" href="https://github.com/Abbalolo">
-      <AiFillGithub className="hover:text-white duration-300" />
-    </Link>
-
-    <Link
-      target="_blank"
-      href="https://instagram.com/lohloh009?igshid=OGQ5ZDc2ODk2ZA=="
-    >
-      <AiFillInstagram className="hover:text-red-300 duration-300" />
-    </Link>
-  </div>
-</footer>
-    </>
-  )
+      <div className="mt-12 pt-6 border-t border-line flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-muted mono">
+        <span>© {year} Ibrahim Lawal Abba. All rights reserved.</span>
+        <motion.a
+          href="mailto:abbalolo360@gmail.com"
+          className="hover:text-accent"
+          whileHover={{ x: 2 }}
+        >
+          abbalolo360@gmail.com
+        </motion.a>
+      </div>
+    </footer>
+  );
 }
-
-export default Footer

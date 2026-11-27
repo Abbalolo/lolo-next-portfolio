@@ -18,6 +18,7 @@ import hypa from "../project-image/hypa-p.png";
 import joshEgesi from "../project-image/josh-egesi.png";
 
 import zidwellFinance from "../project-image/zidwellFinance.png"; 
+import ratelPlus from "../project-image/ratel-plus.png";
 
 export interface ProjectCard {
   id: number;
@@ -34,6 +35,31 @@ export interface ProjectCard {
 }
 
 export const portfolioCards: ProjectCard[] = [
+  {
+    id: 18,
+    name: "Ratel Plus",
+    github: "",
+    host: "https://ratelplus.net.ng",
+    image: ratelPlus,
+    language: [
+      "Next.js 16.2.7",
+      "React",
+      "Turbopack",
+      "Bootstrap Icons 1.11.3",
+      "core-js 2.6.12",
+      "jsDelivr (CDN)",
+      "Nginx 1.28.3",
+      "Ubuntu",
+      "WhatsApp Business Chat",
+      "Zoho SalesIQ",
+      "Priority Hints",
+    ],
+    description:
+      "Ratel Plus Nigeria Limited is a 100% Nigerian-owned, facilities-based telecommunications provider. Its platform delivers reliable, affordable voice and data connectivity across Nigeria: fiber-to-the-home (FTTH) broadband, LTE SIM services, VoIP / Ratel Phone app, enterprise connectivity, network infrastructure, managed network services, and ICT solutions. Licensed by the NCC, with a 99.9% uptime target, 24/7 support, ~15ms average latency, and features like NIN-linked registration, airtime recharge, live ticker updates, and multilingual (English/Hausa) support. Where I'm currently working.",
+    short: "100% Nigerian-owned telecom — fiber broadband, VoIP & connectivity.",
+    category: "Experience Project",
+    field: "Fullstack Developer",
+  },
   {
     id: 1,
     name: "Lava",

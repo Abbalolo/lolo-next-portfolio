@@ -1,257 +1,176 @@
-"use client"
-import { FaFigma } from "react-icons/fa"; 
-import { TbBrandVite } from "react-icons/tb"; 
-import { TbBrandGithubCopilot } from "react-icons/tb"; 
-import { FaNpm } from "react-icons/fa"; 
-import { TbBrandVscode } from "react-icons/tb"; 
-import { SiPostman } from "react-icons/si"; 
-import { SiTypescript } from "react-icons/si"; 
-import { AiOutlineRobot } from "react-icons/ai"; 
-import { SiFireship } from "react-icons/si"; 
-import { TbBrandNextjs } from "react-icons/tb";
-import { SiDaisyui } from "react-icons/si";
-import { AiFillGithub } from "react-icons/ai";
-import { FaNodeJs } from "react-icons/fa";
-import { RiReactjsFill, RiSupabaseFill } from "react-icons/ri";
-import { SiTailwindcss } from "react-icons/si";
-import { SiJavascript } from "react-icons/si";
-import { DiCss3Full } from "react-icons/di";
-import { AiOutlineHtml5 } from "react-icons/ai";
-import { CgGames } from "react-icons/cg";
-import { GiSkills } from "react-icons/gi";
-import { GiGraduateCap } from "react-icons/gi";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useEffect } from "react";
-import SideBar from "../components/SideBar"; 
+"use client";
 
-function Skills() {
-  const contents = [
-    {
-      id: 1,
-      name: "Education",
-      description: ` Certainly, here's a concise education paragraph for your Computer Science diploma with a GPA of 3.34:
+import { motion } from "motion/react";
+import {
+  FaFigma,
+  FaGitAlt,
+  FaNodeJs,
+  FaNpm,
+  FaServer,
+} from "react-icons/fa";
+import {
+  SiCss3,
+  SiDaisyui,
+  SiExpress,
+  SiFramer,
+  SiHtml5,
+  SiJavascript,
+  SiJest,
+  SiMongodb,
+  SiNextdotjs,
+  SiPostgresql,
+  SiPosthog,
+  SiPostman,
+  SiPhp,
+  SiPython,
+  SiReact,
+  SiRedux,
+  SiSupabase,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
+  SiVite,
+  SiZedindustries,
+  SiVitest,
+} from "react-icons/si";
+import { RiSupabaseFill } from "react-icons/ri";
+import { TbBrandVscode } from "react-icons/tb";
+import type { ReactNode } from "react";
 
-    "I hold a diploma in Computer Science, a testament to my dedication and passion for the world of technology. Throughout my academic journey, I consistently strived for excellence, culminating in a commendable GPA of 3.34. This educational foundation has equipped me with a strong understanding of computer science principles, programming languages, and problem-solving skills, which I enthusiastically apply to my work as a frontend developer.`,
-      school: "Kano State Polytechnic (School Of Tecknology), 2021 to 2022",
-      icon: <GiGraduateCap className="ml-3 text-xl" />,
-    },
-    {
-      id: 2,
-      name: "Technical Skills",
-      description:
-        "As a frontend developer, I bring a versatile skill set to the table, proficient in HTML, CSS, JavaScript, Tailwind CSS, and React. With a passion for creating captivating and responsive user interfaces, I harness these technologies to transform design concepts into seamless web experiences. Whether it's crafting elegant layouts with HTML and CSS or building interactive web applications with React, I'm dedicated to delivering engaging and user-friendly solutions that captivate audiences and drive digital innovation.",
-      languages: ["HTML", "CSS", "JavaScrip", "Tailwind", "React"],
-      icon: <GiSkills className="ml-3 text-xl" />,
-    },
-    {
-      id: 3,
-      name: "What I Love Doing After Code",
-      description: `I have a fervent love for various interests outside of coding, and one of my great joys is immersing myself in the world of gaming, with FIFA being a particular favorite. The thrill of competitive matches, the strategic gameplay, and the sense of achievement that comes with each victory resonate deeply with me. It's not just about playing games; it's about the camaraderie and excitement they bring, which often fuels my creativity and determination in my frontend development projects.`,
-      icon: <CgGames className="ml-3 text-xl" />,
-    },
-  ];
+import { Reveal } from "../components/motion/Reveal";
+import { Stagger, StaggerItem } from "../components/motion/Stagger";
+import { TextReveal } from "../components/motion/TextReveal";
 
-  const myStacks = [
-    {
-      id: 1,
-      name: "Html",
-      icon: <AiOutlineHtml5/>,
-    },
-    {
-      id: 2,
-      name: "Css",
-      icon: <DiCss3Full/>,
-    },
-    {
-      id: 3,
-      name: "Javascript",
-      icon: <SiJavascript/>,
-    },
-    {
-      id: 4,
-      name: "Reactjs",
-      icon: <RiReactjsFill/>,
-    },
-    {
-      id: 5,
-      name: "Nodejs",
-      icon: <FaNodeJs/>,
-    },
-    {
-      id: 6,
-      name: "Typescript",
-      icon: <SiTypescript />,
-    },
-    {
-      id: 7,
-      name: "MongoSB",
-      icon: <FaNodeJs/>,
-    },
-  ];
+type Tool = { name: string; icon: ReactNode };
 
-  const framLib = [
-    {
-      id: 1,
-      name: "Reactjs",
-      icon: <RiReactjsFill/>,
-    },
-    {
-      id: 2,
-      name: "Daisy ui",
-      icon: <SiDaisyui/>,
-    },
-    {
-      id: 3,
-      name: "Tailwind",
-      icon: <SiTailwindcss/>,
-    },
-    {
-      id: 4,
-      name: "Nextjs",
-      icon: <TbBrandNextjs/>,
-    },
-  ];
-  const tech = [
-    {
-      id: 1,
-      name: "Git / Github",
-      icon: <AiFillGithub/>,
-    },
-    {
-      id: 2,
-      name: "Firebase",
-      icon: <SiFireship/>,
-    },
-    {
-      id: 3,
-      name: "Chatgpt",
-      icon:<AiOutlineRobot />,
-    },
-   
-    {
-      id: 4,
-      name: "Postman",
-      icon: <SiPostman />,
-    },
-    {
-      id: 5,
-      name: "VsCode",
-      icon: <TbBrandVscode />,
-    },
-    {
-      id: 6,
-      name: "Npm",
-      icon: <FaNpm />,
-    },
-    {
-      id: 7,
-      name: "Copilot",
-      icon:<TbBrandGithubCopilot />,
-    },
-    {
-      id: 8,
-      name: "Vite",
-      icon:<TbBrandVite />,
-    },
-    {
-      id: 9,
-      name: "Figma",
-      icon:<FaFigma />,
-    },
-    {
-      id: 10,
-      name: "Supabase",
-      icon:<RiSupabaseFill />,
-    },
-   
-  ];
+const CORE: Tool[] = [
+  { name: "HTML5", icon: <SiHtml5 /> },
+  { name: "CSS3", icon: <SiCss3 /> },
+  { name: "JavaScript", icon: <SiJavascript /> },
+  { name: "TypeScript", icon: <SiTypescript /> },
+  { name: "Python", icon: <SiPython /> },
+  { name: "PHP", icon: <SiPhp /> },
+  { name: "React", icon: <SiReact /> },
+  { name: "Next.js", icon: <SiNextdotjs /> },
+];
 
-  useEffect(() => {
-    AOS.init();
-  }, []);
+const FRONTEND: Tool[] = [
+  { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+  { name: "Redux", icon: <SiRedux /> },
+  { name: "Framer Motion", icon: <SiFramer /> },
+  { name: "DaisyUI", icon: <SiDaisyui /> },
+  { name: "Vite", icon: <SiVite /> },
+  { name: "Figma", icon: <FaFigma /> },
+];
 
+const BACKEND: Tool[] = [
+  { name: "Node.js", icon: <FaNodeJs /> },
+  { name: "Express", icon: <SiExpress /> },
+  { name: "MongoDB", icon: <SiMongodb /> },
+  { name: "PostgreSQL", icon: <SiPostgresql /> },
+  { name: "Supabase", icon: <SiSupabase /> },
+  { name: "REST APIs", icon: <FaServer /> },
+];
+
+const TOOLS: Tool[] = [
+  { name: "Git & GitHub", icon: <FaGitAlt /> },
+  { name: "VS Code", icon: <TbBrandVscode /> },
+  { name: "Zed", icon: <SiZedindustries /> },
+  { name: "Postman", icon: <SiPostman /> },
+  { name: "npm", icon: <FaNpm /> },
+  { name: "Vercel", icon: <SiVercel /> },
+  { name: "Vercel SQL", icon: <SiVercel /> },
+  { name: "PostHog", icon: <SiPosthog /> },
+  { name: "Testing", icon: <SiVitest /> },
+  { name: "Supabase", icon: <RiSupabaseFill /> },
+  { name: "Jest", icon: <SiJest /> },
+];
+
+const GROUPS = [
+  { title: "Core", note: "The foundation I reach for first", items: CORE },
+  { title: "Frontend", note: "Interface & interaction", items: FRONTEND },
+  { title: "Backend & Data", note: "Servers, APIs, databases", items: BACKEND },
+  { title: "Tooling", note: "Everything around the code", items: TOOLS },
+];
+
+export default function Skills() {
   return (
-    <section className="w-full lg:h-screen flex gap-5 items-start">
-      <SideBar/>
-      <div className="flex flex-col md:flex-row gap-5 ">
-        
-        <div className="w-full flex flex-col  border border-gray-600 dark:border-gray-300 p-5 rounded-md">
-          <h3 className="text-blue-500 text-2xl py-4 font-extrabold text-center">
-            TechStack
-          </h3>
-          <div className=" flex flex-wrap gap-3 ">
-            {myStacks.map((stack, index) => (
-              <div
-                key={index}
-                className="dark:text-black  dark:bg-transparent  p-3 flex items-center dark:bg-[#f9f7f6] dark:border dark:hover:border-gray-400 dark:border-gray-300 border-gray-600 border  hover:border hover:border-slate-500  rounded-sm gap-2 "
-              >
-                <p className="text-3xl dark:text-black   ">{stack.icon}</p>
-                <span className="text-[#f9f7f6] text-center p-1 w-full dark:text-black ">
-                  {stack.name}
-                </span>
-              </div>
-            ))}
+    <section className="container-page pt-12 md:pt-16 pb-20">
+      <Reveal>
+        <p className="label">Skills</p>
+        <TextReveal
+          as="h1"
+          text="Tools I build with"
+          className="mt-3 text-[clamp(2rem,5vw,3.5rem)] tracking-[-0.03em]"
+        />
+        <p className="mt-4 max-w-2xl text-muted leading-relaxed">
+          I pick tools that ship fast and stay maintainable. The stack grows, but the goal stays
+          the same: clear interfaces, quick loads, and code the next person can read.
+        </p>
+      </Reveal>
+
+      {/* Education */}
+      <Reveal className="mt-14">
+        <div className="rounded-xl border border-line bg-surface p-6 md:p-8 grid md:grid-cols-[auto_1fr] gap-6">
+          <div className="mono text-accent text-4xl">{"{}"}</div>
+          <div>
+            <p className="label">Education</p>
+            <h2 className="mt-2 text-2xl tracking-tight">Computer Science</h2>
+            <p className="mt-1 text-sm text-muted">Kano State Polytechnic (School of Technology)</p>
+            <ul className="mt-4 grid sm:grid-cols-2 gap-2 text-sm text-muted">
+              <li>National Diploma — 2021 to 2022</li>
+              <li>Higher National Diploma — in progress</li>
+              <li>GPA 3.34 / 4.00</li>
+              <li>Programming &amp; problem-solving foundation</li>
+            </ul>
           </div>
         </div>
-        <div className="w-full flex flex-col  border border-gray-600 dark:border-gray-300 p-5 rounded-md">
-          <h3 className="text-blue-500 text-2xl py-4 font-extrabold text-center">
-            Frameworks / Library
-          </h3>
-          <div className="mt-3 flex flex-wrap gap-3 ">
-            {framLib.map((lab, i) => (
-              <div
-                key={i}
-                className="dark:text-black  dark:bg-transparent  p-3 flex items-center dark:bg-[#f9f7f6] dark:border dark:hover:border-gray-400 dark:border-gray-300 border-gray-600 border  hover:border hover:border-slate-500  rounded-sm gap-2 "
-              >
-                <p className="text-3xl dark:text-black ">{lab.icon}</p>
-                <span className="text-[#f9f7f6] text-center p-1 w-full dark:text-black ">
-                  {lab.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="w-full flex flex-col  justify-center border border-gray-600 dark:border-gray-300 p-5 rounded-md">
-          <h3 className="text-blue-500 text-2xl py-4 font-extrabold text-center">
-            Tools & Technologies
-          </h3>
-          <div className="mt-3 flex flex-wrap gap-3 ">
-            {tech.map((tk, i) => (
-              <div
-                key={i}
-                className="dark:text-black  dark:bg-transparent  p-3 flex items-center dark:bg-[#f9f7f6] dark:border dark:hover:border-gray-400 dark:border-gray-300 border-gray-600 border  hover:border hover:border-slate-500  rounded-sm gap-2 "
-              >
-                <p className="text-3xl dark:text-black ">{tk.icon}</p>
-                <span className="text-[#f9f7f6] text-center p-1 w-full dark:text-black ">
-                  {tk.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      {/* <article className="">
-        {contents.map((content) => (
-          <ul
-            key={content.id}
-            className="list-none relative before:content-[''] before:bg-gray-400 before:inline-block before:absolute before:left-0 before:w-[1px] before:top-[4px] before:h-screen "
-          >
-            <li className="mr-5 before:content-['']  before:bg-[#212529] dark:before:bg-[#f9f7f6] before:inline-block before:absolute before:left-[-7px] before:w-[15px] before:h-[15px]  before:mt-[3px] before:border before:border-gray-400 before:rounded-full mt-[3rem] pb-[3rem] pl-[20px]">
-              <h2 className="text-xl flex items-center font-extrabold">
-                {content.name}
-                {content.icon}
-              </h2>
-              <p className="text-[#f9f7f6] dark:text-[#545454]">
-                {content.description}
-              </p>
-              <h4 className="mt-3 font-extrabold">{content.school}</h4>
-            </li>
-          </ul>
+      </Reveal>
+
+      {/* Skill groups */}
+      <div className="mt-14 space-y-16">
+        {GROUPS.map((group, gi) => (
+          <Reveal key={group.title} delay={0.05 * gi}>
+            <div className="flex items-baseline justify-between gap-4 border-b border-line pb-3 mb-6">
+              <h2 className="text-2xl tracking-tight">{group.title}</h2>
+              <p className="label hidden sm:block">{group.note}</p>
+            </div>
+            <Stagger className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3" stagger={0.04}>
+              {group.items.map((tool) => (
+                <StaggerItem key={tool.name}>
+                  <motion.div
+                    className="group flex items-center gap-3 rounded-lg border border-line bg-base px-4 py-3 hover:border-accent hover:bg-surface transition-colors h-full"
+                    whileHover={{ y: -3 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <span className="text-xl text-muted group-hover:text-accent transition-colors [&>svg]:w-5 [&>svg]:h-5">
+                      {tool.icon}
+                    </span>
+                    <span className="text-sm font-medium">{tool.name}</span>
+                  </motion.div>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </Reveal>
         ))}
-      </article> */}
+      </div>
+
+      {/* Beyond code */}
+      <Reveal className="mt-20">
+        <div className="rounded-xl border border-line p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div>
+            <p className="label">Beyond code</p>
+            <p className="mt-2 text-lg tracking-tight max-w-xl">
+              Hackathons &amp; startups, and FIFA with friends whenever the build is bug-free.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2 label">
+            <span className="rounded-md border border-line px-3 py-1.5 text-muted">Hackathons</span>
+            <span className="rounded-md border border-line px-3 py-1.5 text-muted">Startups</span>
+            <span className="rounded-md border border-line px-3 py-1.5 text-muted">FIFA</span>
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }
-
-export default Skills;
