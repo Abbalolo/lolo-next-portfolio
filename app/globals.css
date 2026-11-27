@@ -5,7 +5,7 @@
 /* ------------------------------------------------------------------ *
  * Design tokens
  * Dark-first. `.dark` = dark mode, no `.dark` = light mode.
- * One warm accent. No purple/blue gradients. No glassmorphism.
+ * One blue accent. No gradients. No glassmorphism.
  * ------------------------------------------------------------------ */
 :root {
   color-scheme: light;
@@ -15,8 +15,8 @@
   --fg: #161616;
   --muted: #5c5c5c;
   --line: rgba(0, 0, 0, 0.12);
-  --accent: #9a6a00;
-  --accent-soft: rgba(154, 106, 0, 0.12);
+  --accent: #2563eb;
+  --accent-soft: rgba(37, 99, 235, 0.12);
   --accent-fg: #ffffff;
 }
 
@@ -28,9 +28,9 @@
   --fg: #f4f4f5;
   --muted: #9aa1ac;
   --line: rgba(255, 255, 255, 0.1);
-  --accent: #f5b942;
-  --accent-soft: rgba(245, 185, 66, 0.14);
-  --accent-fg: #14161a;
+  --accent: #3b82f6;
+  --accent-soft: rgba(59, 130, 246, 0.16);
+  --accent-fg: #ffffff;
 }
 
 @layer base {

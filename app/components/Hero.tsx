@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -24,7 +24,7 @@ const EXPLORE = [
 export default function Hero() {
   return (
     <section className="container-page pt-12 md:pt-20 pb-20">
-      <div className="grid lg:grid-cols-[1.55fr_1fr] gap-12 lg:gap-16 items-center">
+      <div className="grid lg:grid-cols-[1.65fr_1fr] gap-12 lg:gap-16 items-center">
         {/* Copy */}
         <div>
           <motion.p
@@ -33,7 +33,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="text-accent">●</span> Full-Stack &amp; Frontend Developer · Kano, Nigeria
+            <span className="text-accent">â—</span> Full-Stack &amp; Frontend Developer Â· Kano, Nigeria
           </motion.p>
 
           <TextReveal
@@ -45,7 +45,7 @@ export default function Hero() {
 
           <Reveal delay={0.35} y={18}>
             <p className="mt-6 max-w-xl text-lg md:text-xl text-muted leading-relaxed">
-              I design and build fast, accessible, well-crafted web products — from pixel-precise
+              I design and build fast, accessible, well-crafted web products â€” from pixel-precise
               interfaces to the APIs behind them. Currently pursuing a Computer Science HND at
               Kano Polytechnic and shipping real work for real users.
             </p>
@@ -80,7 +80,7 @@ export default function Hero() {
 
         {/* Photo */}
         <Reveal delay={0.25} y={28} className="relative">
-          <figure className="relative aspect-[4/5] w-full max-w-[420px] mx-auto lg:mx-0">
+          <figure className="relative aspect-[4/5] w-full max-w-[340px] max-h-[460px] mx-auto lg:mx-0 lg:justify-self-end">
             <div className="absolute inset-0 rounded-xl border border-line bg-surface" aria-hidden="true" />
             <div className="relative h-full w-full rounded-xl overflow-hidden border border-line">
               {/* dark theme photo */}
@@ -89,7 +89,7 @@ export default function Hero() {
                 alt="Ibrahim Lawal Abba, full-stack developer"
                 fill
                 priority
-                sizes="(max-width: 1024px) 90vw, 420px"
+                sizes="(max-width: 340px) 90vw, 340px"
                 placeholder="blur"
                 className="object-cover hidden dark:block"
               />
@@ -99,7 +99,7 @@ export default function Hero() {
                 alt="Ibrahim Lawal Abba, full-stack developer"
                 fill
                 priority
-                sizes="(max-width: 1024px) 90vw, 420px"
+                sizes="(max-width: 340px) 90vw, 340px"
                 placeholder="blur"
                 className="object-cover block dark:hidden"
               />
@@ -112,7 +112,7 @@ export default function Hero() {
         </Reveal>
       </div>
 
-      {/* Explore — asymmetric list, not a card grid */}
+      {/* Explore â€” asymmetric list, not a card grid */}
       <Stagger className="mt-24 grid sm:grid-cols-3 gap-px rounded-xl overflow-hidden border border-line bg-line" stagger={0.08}>
         {EXPLORE.map((item) => (
           <StaggerItem key={item.href} className="bg-base">

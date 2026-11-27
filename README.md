@@ -7,7 +7,7 @@ A full-stack & frontend developer portfolio built with **Next.js 16 (App Router)
 Not another centered-everything gradient template. A distinctive, human-crafted system:
 
 - **Dark-first** with a light toggle, persisted to `localStorage`, no flash on load.
-- **One warm accent** (gold) on a near-black/“paper” palette — no purple/blue gradients, no glassmorphism-on-everything.
+- **One blue accent** on a near-black/“paper” palette — no gradients, no glassmorphism-on-everything.
 - **Asymmetric layout**, hairline rules instead of border-on-everything, monospace labels, strong type hierarchy.
 - **Self-hosted fonts** via `next/font` (Space Grotesk + JetBrains Mono) — no external font request.
 
